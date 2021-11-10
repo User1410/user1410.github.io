@@ -41,16 +41,16 @@ const positions = {
 let start = 0;
 let end = 100;
 
-if (window.innerWidth <= 900) {
-    for (let number in positions) {
-        console.log(`start: ${start} num: ${number}`);
-        console.log(`end: ${end} num: ${number}`);
-        positions[number][0] = start;
-        positions[number][1] = end;
-        start = end;
-        end += 100;
-    }
-}
+// if (window.innerWidth <= 900) {
+//     for (let number in positions) {
+//         console.log(`start: ${start} num: ${number}`);
+//         console.log(`end: ${end} num: ${number}`);
+//         positions[number][0] = start;
+//         positions[number][1] = end;
+//         start = end;
+//         end += 100;
+//     }
+// }
 
 console.log(positions["p-33"][1] + " cia va ilgis");
 
