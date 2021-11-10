@@ -21,3 +21,19 @@
     left: 0;
     margin: 0 auto 10px auto;
 }
+
+@media (max-width: 900px) {
+    .cont {
+        width: 600px;
+    }
+    
+    .roulette {
+        width: 100%;
+        height: 100px;
+        background-image: url("../img/rulete-mobile.png");
+    }
+    .roulette::before {
+        height: 120px;
+        width: 4px;
+    }
+}
