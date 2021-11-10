@@ -23,9 +23,12 @@
 }
 
 @media (max-width: 900px) {
-    body {
+    .rulette-cont {
         display: flex;
         justify-content: center;
+    }
+    #luckyNum {
+        font-size: 3rem;
     }
     .cont {
         width: 600px;
