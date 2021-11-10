@@ -104,8 +104,8 @@ let intervalId = setInterval(function() {
     
     backgroundPos -= slowDownFrom;
     --slowDownFrom;
-    
     if (backgroundPos === stopAt) {
+        alert(luckyNumber);
         clearInterval(intervalId);
     }
 
