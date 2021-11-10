@@ -64,7 +64,6 @@ function calc(sum) {
 const roulette = document.querySelector(".roulette");
 const indicatorSize = 4;
 let backgroundPos = 11100;
-let speed = 370;
 
 const luckyNumber = random(0,36);
 const pick = positions[luckyNumber];
@@ -78,8 +77,6 @@ const slowDownRemider = (slowDownFrom + 1)/2;
 console.log(luckyNumber);
 console.log(distance);
 
-let startTime = new Date().getSeconds();
-
 if (slowDownFrom*slowDownRemider < distance) {
     backgroundPos -= (distance - slowDownFrom * slowDownRemider);
 }
@@ -87,14 +84,11 @@ if (slowDownFrom*slowDownRemider < distance) {
 let intervalId = setInterval(function() {
     roulette.style.backgroundPosition = backgroundPos.toString() + "px";
     
-    if (slowDownFrom !== 0) {
-        backgroundPos -= slowDownFrom;
-        --slowDownFrom;
-    }
+    
+    backgroundPos -= slowDownFrom;
+    --slowDownFrom;
     
     if (backgroundPos === stopAt) {
-        let endTime = new Date().getSeconds();
-        console.log(endTime - startTime);
         clearInterval(intervalId);
     }
 
