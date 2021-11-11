@@ -55,7 +55,6 @@
     flex: 0 0 50px;
 }
 
-
 @media screen and (max-width: 900px), (max-width: 900px) and (orientation: landscape)  {
     /* .cont {
         display: flex;
