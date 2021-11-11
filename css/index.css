@@ -56,7 +56,7 @@
 }
 
 
-@media (max-width: 900px) {
+@media screen and (max-width: 900px), (max-width: 900px) and (orientation: landscape)  {
     /* .cont {
         display: flex;
         justify-content: center;
