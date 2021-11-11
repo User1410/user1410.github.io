@@ -8,9 +8,18 @@
         <title>Win Big!</title>
     </head>
     <body>
-        <div class="rulette-cont">
-            <div class="cont m-auto mt-5">
+        <div class="cont">
+            <div class="rulette-cont m-auto mt-5">
                 <div class="roulette"></div>
+                <div class="counter d-flex align-items-center justify-content-center text-white">
+                    <p id="time-left" class="fs-2">15</p>
+                </div>
+            </div>
+            <div class="history m-auto mt-3 d-flex align-items-center justify-content-around">
+                <p>Last winners</p>
+                <div id="winners">
+                    <div class="bg-danger p-3">3</div>
+                </div>
             </div>
         </div>
         <p id="luckyNum"></p>

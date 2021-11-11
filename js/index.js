@@ -52,9 +52,6 @@ if (window.innerWidth <= 900) {
     }
 }
 
-console.log(positions["p-33"][1] + " cia va ilgis");
-
-
 const colors = {
     "green": [0],
     "red": [5, 16, 1, 14, 9, 18, 7, 12, 3, 32, 19, 21, 25, 34, 27, 36, 30, 23],
@@ -78,35 +75,63 @@ function calc(sum) {
     return (iter-1);
 }
 
-const roulette = document.querySelector(".roulette");
-const indicatorSize = 4;
-let backgroundPos = positions["p-33"][1] * 2;
+function countDown() {
+    const timeLeft = document.getElementById("time-left");
+    const counter = document.querySelector(".counter");
+    counter.style.visibility = "visible";
 
-const luckyNumber = random(0,36);
-const luckyNumPos = positions["p-" + luckyNumber];
-const stopAt = random(luckyNumPos[0] + indicatorSize, luckyNumPos[1] - indicatorSize);
-
-let timer = 50;
-const distance = backgroundPos - stopAt;
-let slowDownFrom = calc(distance);
-const slowDownRemider = (slowDownFrom + 1)/2;
-
-console.log(luckyNumber);
-console.log(distance);
-
-if (slowDownFrom*slowDownRemider < distance) {
-    backgroundPos -= (distance - slowDownFrom * slowDownRemider);
+    let start = 15000;
+  
+    let intervalId = setInterval(function() {
+        start = start - 10;
+        timeLeft.textContent = start / 1000;
+  
+        if (start === 0) {
+            clearInterval(intervalId);
+            counter.style.visibility = "hidden";
+            play();
+        }
+    }, 10)
 }
 
-let intervalId = setInterval(function() {
-    roulette.style.backgroundPosition = backgroundPos.toString() + "px";
-    
-    
-    backgroundPos -= slowDownFrom;
-    --slowDownFrom;
-    if (backgroundPos === stopAt) {
-        document.getElementById("luckyNum").textContent = luckyNumber;
-        clearInterval(intervalId);
+function play() {
+    const roulette = document.querySelector(".roulette");
+    const indicatorSize = 4;
+    let backgroundPos = positions["p-33"][1] * 2;
+
+    const luckyNumber = random(0,36);
+    const luckyNumPos = positions["p-" + luckyNumber];
+    const stopAt = random(luckyNumPos[0] + indicatorSize, luckyNumPos[1] - indicatorSize);
+
+    let timer = 50;
+    const distance = backgroundPos - stopAt;
+    let slowDownFrom = calc(distance);
+    const slowDownRemider = (slowDownFrom + 1)/2;
+
+    console.log(luckyNumber);
+    console.log(distance);
+
+    if (slowDownFrom*slowDownRemider < distance) {
+        backgroundPos -= (distance - slowDownFrom * slowDownRemider);
     }
 
-}, timer)
+    let intervalId = setInterval(function() {
+        roulette.style.backgroundPosition = backgroundPos.toString() + "px";
+        
+        backgroundPos -= slowDownFrom;
+        --slowDownFrom;
+
+        if (backgroundPos === stopAt) {
+            document.getElementById("luckyNum").textContent = luckyNumber;
+            clearInterval(intervalId);
+
+            let timeoutId = setTimeout(function() {
+                countDown();
+                clearTimeout(timeoutId);
+            }, 1000)
+        }
+
+    }, timer)
+}
+
+countDown()

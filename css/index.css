@@ -1,8 +1,8 @@
-.cont {
+.rulette-cont {
     background-color: #272727;
     width: 900px;
+    position: relative;
 }
-
 .roulette {
     width: 100%;
     height: 150px;
@@ -21,19 +21,28 @@
     left: 0;
     margin: 0 auto 10px auto;
 }
+.counter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    right: 0;
+    background-color: rgba(0,0,0,0.9);
+}
+.history {
+    width: 600px;
+}
 
 @media (max-width: 900px) {
-    body {
-        width: 100%;
-    }
-    .rulette-cont {
+    .cont {
         display: flex;
         justify-content: center;
+        width: 100%;
     }
     #luckyNum {
         font-size: 3rem;
     }
-    .cont {
+    .rulette-cont {
         min-width: 600px;
     }
     
