@@ -48,6 +48,10 @@ let start = 0;
 let end = 100;
 
 if (window.innerWidth <= 900) {
+    if (window.innerWidth <= 600)  {
+        start = start - (600 - window.innerWidth) / 2;
+        end = end - (600 - window.innerWidth) / 2;
+    }
     for (let number in positions) {
         console.log(`start: ${start} num: ${number}`);
         console.log(`end: ${end} num: ${number}`);
