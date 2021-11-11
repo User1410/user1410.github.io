@@ -55,7 +55,7 @@
     flex: 0 0 50px;
 }
 
-@media screen and (max-width: 900px), (max-width: 900px) and (orientation: landscape)  {
+@media screen and (max-width: 900px) {
     /* .cont {
         display: flex;
         justify-content: center;
@@ -70,6 +70,7 @@
     
     .roulette {
         width: 100%;
+        max-width: 600px;
         height: 100px;
         background-image: url("../img/rulete-mobile.png");
         background-size: 3700px 100px;
