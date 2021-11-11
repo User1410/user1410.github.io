@@ -44,14 +44,15 @@ const colors = {
     "black": [24, 33, 20, 31, 22, 29, 28, 35, 26, 15, 4, 2, 17, 6, 13, 11, 8, 10]
 }
 
-let start = 0;
-let end = 100;
-
 if (window.innerWidth <= 900) {
+    let start = 0;
+    let end = 100;
+
     if (window.innerWidth <= 600)  {
         start = start - (600 - window.innerWidth) / 2;
         end = end - (600 - window.innerWidth) / 2;
     }
+
     for (let number in positions) {
         console.log(`start: ${start} num: ${number}`);
         console.log(`end: ${end} num: ${number}`);
