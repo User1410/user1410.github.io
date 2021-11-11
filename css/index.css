@@ -79,6 +79,7 @@
         width: 4px;
     }
     .history {
+        flex-direction: column;
         width: 95%
     }
     .history p {
