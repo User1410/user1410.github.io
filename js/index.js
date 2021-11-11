@@ -38,6 +38,12 @@ const positions = {
     "p-33": [5400, 5550]
 }
 
+const colors = {
+    "green": [0],
+    "red": [5, 16, 1, 14, 9, 18, 7, 12, 3, 32, 19, 21, 25, 34, 27, 36, 30, 23],
+    "black": [24, 33, 20, 31, 22, 29, 28, 35, 26, 15, 4, 2, 17, 6, 13, 11, 8, 10]
+}
+
 let start = 0;
 let end = 100;
 
@@ -50,12 +56,6 @@ if (window.innerWidth <= 900) {
         start = end;
         end += 100;
     }
-}
-
-const colors = {
-    "green": [0],
-    "red": [5, 16, 1, 14, 9, 18, 7, 12, 3, 32, 19, 21, 25, 34, 27, 36, 30, 23],
-    "black": [24, 33, 20, 31, 22, 29, 28, 35, 26, 15, 4, 2, 17, 6, 13, 11, 8, 10]
 }
 
 function random(min, max) {
@@ -80,7 +80,7 @@ function countDown() {
     const counter = document.querySelector(".counter");
     counter.style.visibility = "visible";
 
-    let start = 15000;
+    let start = 10000;
   
     let intervalId = setInterval(function() {
         start = start - 10;
@@ -92,6 +92,29 @@ function countDown() {
             play();
         }
     }, 10)
+}
+
+var totalWinners = [];
+function addWinner(luckyNum) {
+    const winners = document.getElementById("winners");
+    let background;
+    
+    totalWinners.unshift(luckyNum);
+    if (totalWinners.length >= 9) {
+        totalWinners.pop();
+        winners.removeChild(winners.lastChild);
+    }
+
+    for (let color in colors) {
+        if (colors[color].includes(luckyNum)) {
+            background = color;
+        }
+    }
+
+    let markup = `<div class="bg-${background}">${luckyNum}</div>`;
+
+    winners.innerHTML = markup + winners.innerHTML;
+    
 }
 
 function play() {
@@ -122,12 +145,12 @@ function play() {
         --slowDownFrom;
 
         if (backgroundPos === stopAt) {
-            document.getElementById("luckyNum").textContent = luckyNumber;
             clearInterval(intervalId);
 
             let timeoutId = setTimeout(function() {
-                countDown();
                 clearTimeout(timeoutId);
+                addWinner(luckyNumber);
+                countDown();
             }, 1000)
         }
 

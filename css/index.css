@@ -1,3 +1,9 @@
+.bg-red {
+    background-color: #FF3D3D;
+}
+.bg-green {
+    background-color: #35AA2B;
+}
 .rulette-cont {
     background-color: #272727;
     width: 900px;
@@ -30,8 +36,25 @@
     background-color: rgba(0,0,0,0.9);
 }
 .history {
-    width: 600px;
+    width: 900px;
 }
+.history p {
+    width: 20%;
+}
+#winners {
+    width: 60%;
+    overflow: hidden;
+}
+#winners > div  {
+    margin-right: 10px;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 50px;
+}
+
 
 @media (max-width: 900px) {
     .cont {
@@ -54,6 +77,16 @@
     .roulette::before {
         height: 120px;
         width: 4px;
+    }
+    .history {
+        width: 95%
+    }
+    .history p {
+        width: 100%;
+        text-align: center;
+    }
+    #winners {
+        width: 100%;
     }
 }
 
